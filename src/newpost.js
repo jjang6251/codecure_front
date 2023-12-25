@@ -71,15 +71,10 @@ function Newpost() {
             },
             body: JSON.stringify(request)
         })
-            // .then(() => {
-            //     console.log(request);
-            //     // 폼 초기화
-            //     setTitle('');
-            //     setContent('');
-            //     setBoardType('');
-            //     // 페이지 이동
-            //     window.location.href = '/boardList';
-            // })
+            .then(response => response.json())
+            .then(data => {
+                alert(data);
+            })
             .catch((error) => {
                 console.error('Error:', error);
             });
@@ -110,6 +105,7 @@ function Newpost() {
                     value={content}
                     onChange={handleContentChange}
                     placeholder='내용을 입력하세요'
+                    required
                 />
                 <span>
                     <Bt>임시 저장</Bt>

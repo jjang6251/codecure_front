@@ -19,6 +19,7 @@ function Board() {
         console.error('Error fetching board data:', error);
       });
   }, []);
+  
   return (
     <D>
       <Menubar />

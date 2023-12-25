@@ -10,9 +10,12 @@ import FindPW from './findPW';
 import Introduce from './board/introduce';
 import Newpost from './newpost';
 import Notfound from './notfound';
+import Board_detail from './board/board_detail'
 
 function App() {
+	
 	return (
+		
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Main />}></Route>
@@ -25,6 +28,7 @@ function App() {
 				<Route path="/signup" element={<SignUp />}></Route>
 				<Route path="/findPW" element={<FindPW />}></Route>
 				<Route path="/*" element={<Notfound />}></Route>
+				<Route path="boardList/:postId" element={<Board_detail />}></Route>
 			</Routes>
 		</BrowserRouter>
 	);

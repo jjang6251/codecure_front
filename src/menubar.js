@@ -97,9 +97,11 @@ const Login = styled.div`
     }
 `;
 
-function Menubar() {
+function Menubar({ buttonClicked, isNewPost }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태를 저장하는 상태(State)
     const [username, setUsername] = useState(''); // 사용자 이름을 저장하는 상태 추가
+    const [showAlert, setShowAlert] = useState(true);
+
 
     useEffect(() => {
         const checkLoginStatus = async () => {
@@ -129,38 +131,50 @@ function Menubar() {
         });
     };
 
-    const menu = (
-        <Menu>
-            <Menu.Item>
-                <Link to = '/profile'>회원정보</Link>
-            </Menu.Item>
-            <Menu.Item onClick={handleLogout}>로그아웃</Menu.Item>
-        </Menu>
-    )
-    return (
-        <Div>
-            <Logo>
-                <Link to="/">
-                    <img alt="codecure_logo" src="/images/logo.png" width="100px" height="100px" />
-                </Link>
-            </Logo>
-            <Link to="/introduce"><MenuL>소개</MenuL></Link>
-            <Link to="/announce"><MenuL>공지</MenuL></Link>
-            <Link to="/board"><MenuL>게시판</MenuL></Link>
-            <Link to="/QnA"><MenuL>Q&A</MenuL></Link>
-            {isLoggedIn ? (
-                    <Dropdown overlay={menu}>
-                        <Button>{username} <DownOutlined/></Button>
-                    </Dropdown>
-            ): (
-                    <Login>
-                <Link to = "/login">로그인</Link>
-            </Login >
-            )
-}
-            
-        </Div >
-    );
-}
+    const handleMenuClick = (event, menuName) => {
+        if (showAlert && (isNewPost)) {
+            const confirmed = window.confirm("게시물을 작성 중입니다. 정말로 이동하시겠습니까?");
+            if (!confirmed) {
+                event.preventDefault();
+            } else {
+                setShowAlert(false);
+            }
+        }
+    };
 
-export default Menubar;
+
+        const menu = (
+            <Menu>
+                {/* <Menu.Item>
+                    <Link to='/profile'>회원정보</Link>
+                </Menu.Item> */}
+                <Menu.Item onClick={handleLogout}>로그아웃</Menu.Item>
+            </Menu>
+        )
+        return (
+            <Div>
+                <Logo>
+                    <Link to="/">
+                        <img alt="codecure_logo" src="/images/logo.png" width="100px" height="100px" />
+                    </Link>
+                </Logo>
+                <Link to="/introduce"><MenuL onClick={(e) => handleMenuClick(e, '소개')}>소개</MenuL></Link>
+                <Link to="/announce"><MenuL onClick={(e) => handleMenuClick(e, '공지')}>공지</MenuL></Link>
+                <Link to="/board"><MenuL onClick={(e) => handleMenuClick(e, '게시판')}>게시판</MenuL></Link>
+                <Link to="/QnA"><MenuL onClick={(e) => handleMenuClick(e, 'Q&A')}>Q&A</MenuL></Link>
+                {isLoggedIn ? (
+                    <Dropdown overlay={menu}>
+                        <Button>{username} <DownOutlined /></Button>
+                    </Dropdown>
+                ) : (
+                    <Login>
+                        <Link to="/login" onClick={(e) => handleMenuClick(e, '로그인')}>로그인</Link>
+                    </Login >
+                )
+                }
+
+            </Div >
+        );
+    }
+
+    export default Menubar;

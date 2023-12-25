@@ -28,7 +28,20 @@ const Introduce_Logo = styled.div`
 const Info_box = styled.div`
     margin-top: 50px; 
     line-height: 1.5;
-    
+    height: 650px;
+`;
+
+const MiniContainer = styled.ul`
+
+  border-radius: 5px;
+  padding-left: -20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+`;
+
+const BigContainer = styled.div`
+  display: flex;
+  justify-content: space-around; /* Adjust as needed */
 `;
 
 function Introduce() {
@@ -45,27 +58,30 @@ function Introduce() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CodeCure에서 공부하며 지식을 깨우치자는 의미를 갖고 있습니다.
             <br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재 CodeCure에는 개발팀과 보안팀으로 이루어져 있습니다.
             <br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아래는 2023년 2학기에 진행된 활동입니다.
-            
-            <ol>
-              <li>
-                악성코드 제작팀
-              </li>
-              <li>
-                웹사이트 제작팀
-              </li>
-              <li>
-                네트워크 포렌식 팀
-              </li>
-              <li>
-                웹 퍼저 제작팀
-              </li>
-              <li>
-                기초 상식반 개설
-              </li>
-              <li>
-                뉴스레터 설명
-              </li>
-            </ol>
+            <div>
+              <BigContainer>
+                <MiniContainer>
+                  <h2>보안팀</h2>
+                  <li>
+                    악성코드 제작팀
+                  </li>
+                  <li>
+                    네트워크 포렌식 팀
+                  </li>
+                  <li>
+                    웹 퍼저 제작팀
+                  </li>
+                  <li>
+                    기초 상식반 개설
+                  </li>
+                </MiniContainer>
+                <MiniContainer>
+                  <h2>개발팀</h2>
+                  <li>웹사이트 개발팀</li>
+                  <li>뉴스레터 설명</li>
+                </MiniContainer>
+              </BigContainer>
+            </div>
           </div>
         </Info_box>
       </Container>
