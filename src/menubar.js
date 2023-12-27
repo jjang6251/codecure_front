@@ -159,9 +159,9 @@ function Menubar({ buttonClicked, isNewPost }) {
                     </Link>
                 </Logo>
                 <Link to="/introduce"><MenuL onClick={(e) => handleMenuClick(e, '소개')}>소개</MenuL></Link>
-                <Link to="/announce"><MenuL onClick={(e) => handleMenuClick(e, '공지')}>공지</MenuL></Link>
+                <Link to="/notice"><MenuL onClick={(e) => handleMenuClick(e, '공지')}>공지</MenuL></Link>
                 <Link to="/board"><MenuL onClick={(e) => handleMenuClick(e, '게시판')}>게시판</MenuL></Link>
-                <Link to="/QnA"><MenuL onClick={(e) => handleMenuClick(e, 'Q&A')}>Q&A</MenuL></Link>
+                <Link to="/qna"><MenuL onClick={(e) => handleMenuClick(e, 'Q&A')}>Q&A</MenuL></Link>
                 {isLoggedIn ? (
                     <Dropdown overlay={menu}>
                         <Button>{username} <DownOutlined /></Button>

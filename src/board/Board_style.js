@@ -6,6 +6,7 @@ export const D = styled.div`
   width:1510px;
   margin: 0 auto;
   
+  
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-use-select: none;
@@ -84,6 +85,15 @@ export const Ta = styled.table`
   }
 `;
 export const Tr = styled.tr`
+  a {
+    transition: font-size 0.3s;
+    text-decoration: none;
+    color: black
+  }
+  a:hover {
+    color: blue;
+    font-size: 20px;
+  }
   td {
     text-align: center;
     padding: 15px;
@@ -104,7 +114,7 @@ export const Nt = styled.div`
   cursor: pointer;
   margin-left:1250px;
   margin-top : 15px;
-  background-color: skyblue;
+  background-color: #D3E2FD;
   border : 1px solid black;
   border-radius: 10px;
   padding : 5px;

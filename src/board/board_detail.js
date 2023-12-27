@@ -132,21 +132,24 @@ function Board_detail() {
     if (isConfirmed) {
       // 게시물 삭제 API 호출
       fetch(`http://${process.env.REACT_APP_SERVERPORT}/delete/${postId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          // 여기에 필요한 인증 토큰 등의 헤더를 추가하세요.
-        },
+        credentials: 'include',
       })
         .then(response => {
           if (response.ok) {
             // 삭제가 성공하면 게시판 페이지로 이동
+            return response.text();
             navigate('/board');
           } else {
             // 삭제가 실패한 경우에 대한 처리
             console.error('게시물 삭제 실패');
           }
         })
+        .then((data)=> {
+          alert(data);
+          if(data === "success"){
+              window.location.href = `/${posts.type}`;
+          }
+      })  
         .catch(error => {
           console.error('에러 발생:', error);
         });

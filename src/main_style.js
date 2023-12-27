@@ -16,19 +16,25 @@ export const A = styled.div`
 
 export const Search = styled.input`
     border: 1.5px solid black;
-    width: 580px;
-    margin: 40px 320px;
+    width: 700px; /* Adjust the width as needed */
+    margin: 40px 20px 40px auto; /* Add margin-right to increase the space */
     padding: 10px;
     font-size: 20px;
     border-radius: 10px;
     padding-right: 200px;
-
 `;
+
+export const SearchBox = styled.div`
+    display: inline-block;
+    margin-left: 340px;
+    padding-right: 20px; /* Add padding to the right side */
+`;
+
 
 export const Slogan = styled.div`
     width: 800px;
     text-align: center;
-    margin: 0px 160px;
+    margin: 0px 220px;
     margin-top: -100px;
     padding : 200px;
     font-size: 100px;
@@ -46,7 +52,6 @@ export const Slogan = styled.div`
 export const SearchBtn = styled.button`
     border: 1px solid black;
     padding: 15px;
-    margin-left: -300px;
     cursor: pointer;
     border-radius: 10px;
-`
+`;

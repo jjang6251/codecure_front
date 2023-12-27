@@ -48,7 +48,7 @@ function Newpost() {
     const [boardType, setBoardType] = useState('');
 
     const handleContentChange = (newContent) => {
-        const strippedContent = newContent.replace(/<p>|<\/p>/g, '')
+        const strippedContent = newContent
         setContent(strippedContent);
     };
 
@@ -57,7 +57,7 @@ function Newpost() {
 
         const request = {
             title: title,
-            content: content,
+            content: content.replace(/<p>|<\/p>/g, ''),
             type: boardType
         };
 
@@ -71,13 +71,15 @@ function Newpost() {
             },
             body: JSON.stringify(request)
         })
-            .then(response => response.json())
-            .then(data => {
-                alert(data);
+            .then(() => {
+                // 페이지 이동
+                window.location.href = `/${boardType}`;
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
+        
+            window.location.href = `/${boardType}`;
     };
 
     return (
@@ -100,12 +102,11 @@ function Newpost() {
                 />
                 <hr />
                 <ReactQuill
-                    style={{ height: "50%", direction: "ltr"}}
+                    style={{ height: "50%", direction: "ltr" }}
                     theme="snow"
                     value={content}
                     onChange={handleContentChange}
                     placeholder='내용을 입력하세요'
-                    required
                 />
                 <span>
                     <Bt>임시 저장</Bt>
